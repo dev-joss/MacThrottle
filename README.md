@@ -19,9 +19,34 @@ A macOS menu bar app that monitors thermal pressure and alerts you when your Mac
 
 ## Installation
 
-1. Build and run the app in Xcode
-2. Click "Install Helper..." in the menu bar dropdown
-3. Enter your admin password to install the monitoring daemon
+### Option 1: Download from Releases
+
+1. Download the latest `.dmg` from [Releases](https://github.com/angristan/MacThrottle/releases)
+2. Drag `MacThrottle.app` to your Applications folder
+3. Right-click the app → "Open" → "Open" (required for unsigned apps)
+4. Click "Install Helper..." in the menu bar dropdown
+5. Enter your admin password to install the monitoring daemon
+
+### Option 2: Build Locally
+
+Building locally automatically signs the app with your development certificate, avoiding Gatekeeper issues.
+
+```bash
+# Clone the repo
+git clone https://github.com/angristan/MacThrottle.git
+cd MacThrottle
+
+# Build with Xcode
+xcodebuild -project MacThrottle.xcodeproj \
+  -scheme MacThrottle \
+  -configuration Release \
+  -derivedDataPath build
+
+# Run the app
+open build/Build/Products/Release/MacThrottle.app
+```
+
+Or open `MacThrottle.xcodeproj` in Xcode and press `Cmd+R` to build and run.
 
 The helper runs `powermetrics` to read thermal data and writes the current state to `/tmp/mac-throttle-thermal-state`.
 
