@@ -15,7 +15,7 @@ final class ThermalPressureReader {
 
     deinit {
         if isRegistered {
-            notify_cancel(token)
+            _ = notify_cancel(token)
         }
     }
 
