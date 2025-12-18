@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/angristan/MacThrottle/compare/v1.2.1...v1.2.2) (2025-12-18)
+
+
+### Bug Fixes
+
+* improve history graph tooltip accuracy ([fbc2781](https://github.com/angristan/MacThrottle/commit/fbc27811804354704ce555e4c7cea0f1a71c7b17))
+
 ## [1.2.1](https://github.com/angristan/MacThrottle/compare/v1.2.0...v1.2.1) (2025-12-18)
 
 
