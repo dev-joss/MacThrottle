@@ -62,6 +62,18 @@ final class SMCReader {
         "Tp01", "Tp05", "Tp0D", "Tp0H", "Tp0L", "Tp0P", "Tp0X", "Tp0b",  // Performance CPU cores
         "Tg05", "Tg0D", "Tg0L", "Tg0T"  // GPU
     ]
+    // M1/M2 Pro/Max/Ultra use TC## keys for CPU cores instead of Tp##
+    // Source: https://github.com/exelban/stats/issues/700
+    private let mProMaxKeys = [
+        // CPU
+        "TC10", "TC11", "TC12", "TC13",
+        "TC20", "TC21", "TC22", "TC23",
+        "TC30", "TC31", "TC32", "TC33",
+        "TC40", "TC41", "TC42", "TC43",
+        "TC50", "TC51", "TC52", "TC53",
+        // GPU
+        "Tg04", "Tg05", "Tg0C", "Tg0D", "Tg0K", "Tg0L", "Tg0S", "Tg0T"
+    ]
     private let m2Keys = [
         "Tp1h", "Tp1t", "Tp1p", "Tp1l",  // Efficiency CPU cores
         "Tp01", "Tp05", "Tp09", "Tp0D", "Tp0X", "Tp0b", "Tp0f", "Tp0j",  // Performance CPU cores
@@ -114,7 +126,7 @@ final class SMCReader {
 
         var maxTemp: Double = 0
 
-        let allKeys = m1Keys + m2Keys + m3Keys + m4Keys
+        let allKeys = m1Keys + mProMaxKeys + m2Keys + m3Keys + m4Keys
         for key in allKeys {
             if let temp = readTemperature(key: key), temp > maxTemp && temp < 150 {
                 maxTemp = temp
