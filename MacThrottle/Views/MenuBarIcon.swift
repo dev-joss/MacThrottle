@@ -2,11 +2,19 @@ import SwiftUI
 
 struct MenuBarIcon: View {
     let pressure: ThermalPressure
+    let temperature: Double?
+    let showTemperature: Bool
 
     var body: some View {
-        Image(systemName: iconName)
-            .symbolRenderingMode(.palette)
-            .foregroundStyle(pressure.color, .primary)
+        HStack(spacing: 6) {
+            Image(systemName: iconName)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(pressure.color, .primary)
+            if showTemperature, let temp = temperature {
+                Text("\(Int(temp.rounded()))°")
+                    .monospacedDigit()
+            }
+        }
     }
 
     private var iconName: String {

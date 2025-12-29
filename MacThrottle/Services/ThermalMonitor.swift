@@ -40,6 +40,11 @@ final class ThermalMonitor {
         didSet { UserDefaults.standard.set(showFanSpeed, forKey: "showFanSpeed") }
     }
 
+    // Menu bar settings
+    var showTemperatureInMenuBar: Bool = UserDefaults.standard.object(forKey: "showTemperatureInMenuBar") as? Bool ?? false {
+        didSet { UserDefaults.standard.set(showTemperatureInMenuBar, forKey: "showTemperatureInMenuBar") }
+    }
+
     var timeInEachState: [(pressure: ThermalPressure, duration: TimeInterval)] {
         guard history.count >= 2 else { return [] }
 

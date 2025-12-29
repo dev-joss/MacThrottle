@@ -8,7 +8,11 @@ struct MacThrottleApp: App {
         MenuBarExtra {
             MenuContentView(monitor: monitor)
         } label: {
-            MenuBarIcon(pressure: monitor.pressure)
+            MenuBarIcon(
+                pressure: monitor.pressure,
+                temperature: monitor.temperature,
+                showTemperature: monitor.showTemperatureInMenuBar
+            )
         }
         .menuBarExtraStyle(.window)
 

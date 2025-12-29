@@ -62,6 +62,9 @@ struct MenuContentView: View {
                     .controlSize(.small)
             }
 
+            Toggle("Show Temperature in Menu Bar", isOn: $monitor.showTemperatureInMenuBar)
+                .controlSize(.small)
+
             Divider()
 
             Text("Notifications")
